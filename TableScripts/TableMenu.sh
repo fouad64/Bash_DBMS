@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$(dirname "$0")/lib/CreateTable.sh"
+
 #-------------------------------------
 #---- Display Table Menu ----
 #-------------------------------------
@@ -7,7 +9,7 @@
 while true
 do
     var=$(zenity --list \
-        --width=420 \
+        --width=450 \
         --height=380 \
         --title="Table Menu" \
         --text="Choose an Option From the List" \
@@ -28,7 +30,7 @@ do
 # -ne 0 : means the command did NOT exit successfully
 # -z "$var" : checks if the variable is empty (no option selected)	
     if [[ $? -ne 0 || -z "$var" ]]; then
-        zenity --info --text="Operation canceled by user"
+        zenity --width=450 --height=100 --info --text="Operation  canceled by  user"
         exit
     fi
 
@@ -42,7 +44,7 @@ do
         "Update Table") UpdateTb ;;
         "Exit") exit ;;
         *)
-            zenity --error --text="Invalid Option. Please try again."
+            zenity --width=450 --height=100 --error --text="Invalid Option. Please try again."
             ;;
     esac
 done
