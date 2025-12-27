@@ -1,42 +1,84 @@
 #!/usr/bin/env bash
-source ./Creation_function.sh  # Make sure this defines CreationFunction()
+#============== source partion =============== 
+source ./Creation_function.sh 
+source ./List_function.sh
+source ./Drop_function.sh
 
-while true; do
-    # Show a Zenity list dialog for choices
-    choice=$(zenity --width=500 --height=250 --list --title="Database Manager" --column="Choose an action" \
-        "Create Database" "List Databases" "Drop Database" "Connect to Database" "Exit")
 
-    # If user closes or cancels dialog, exit
-    if [[ -z "$choice" ]]; then
-        zenity --info --text="No option selected. Exiting."
-        exit 0
-    fi
+while true 
+do
+#============== baner section =================
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m'
 
-    case "$choice" in
-        "Create Database")
+
+clear
+
+
+echo -e "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${CYAN}║                                                              ║${NC}"
+echo -e "${CYAN}║${YELLOW}  ██╗████████╗██╗    ██████╗ ██████╗ ███╗   ███╗███████╗  ${CYAN}    ║${NC}"
+echo -e "${CYAN}║${YELLOW}  ██║╚══██╔══╝██║    ██╔══██╗██╔══██╗████╗ ████║██╔════╝  ${CYAN}    ║${NC}"
+echo -e "${CYAN}║${YELLOW}  ██║   ██║   ██║    ██║  ██║██████╔╝██╔████╔██║███████╗  ${CYAN}    ║${NC}"
+echo -e "${CYAN}║${YELLOW}  ██║   ██║   ██║    ██║  ██║██╔══██╗██║╚██╔╝██║╚════██║  ${CYAN}    ║${NC}"
+echo -e "${CYAN}║${YELLOW}  ██║   ██║   ██║    ██████╔╝██████╔╝██║ ╚═╝ ██║███████║  ${CYAN}    ║${NC}"
+echo -e "${CYAN}║${YELLOW}  ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝  ${CYAN}    ║${NC}"
+echo -e "${CYAN}║                                                              ║${NC}"
+echo -e "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}"
+echo ""
+
+echo -e "${GREEN}                  Supervised by : ${NC}"
+echo -e "${CYAN}                  DR|Shreen Bahader${NC}"
+echo -e "${GREEN}                  Created  by :${NC}"
+echo -e "${MAGENTA}                  Fouad Yasser${NC}"
+echo -e "${MAGENTA}                  Mohamed Hesham${NC}"
+echo ""
+echo -e "${BLUE}════════════════════════════════════════════════════════════════${NC}"
+   echo "1) Create Database"
+    echo "2) List Databases"
+    echo "3) Connect To Database"
+    echo "4) Drop Database"
+    echo "5) Exit"
+    echo ""
+    
+    read -p "Select an option (1-5): " choice
+            case $choice in
+            1)
+            
             CreationFunction
+            read 
+	    ;;
+            2)
+           
+            List_func
+            read 
+	    ;;
+            3)
+            
+            echo "Connect To Databases... "
+           
+	    ;;
+            4)
+             
+            Drop_func
+            read 
+	    ;;
+            5)
+	     
+            echo "Exit... "
+	          exit 0
             ;;
-        "List Databases")
-            # Here you can implement list logic or placeholder
-            zenity --info --width=500 --height=250  --text="Listing databases (not implemented yet)."
+            *)
+	    
+            echo "Please Enter a valed choise (1-5) "
+            read 
             ;;
-        "Drop Database")
-            zenity --question --text="Are you sure you want to drop a database?"
-            if [[ $? -eq 0 ]]; then
-                zenity --info --width=500 --height=250  --text="Dropping database (not implemented yet)."
-            else
-                zenity --info --width=500 --height=250  --text="Drop cancelled."
-            fi
-            ;;
-        "Connect to Database")
-            zenity --info --width=500 --height=250 --text="Connecting to database (not implemented yet)."
-            ;;
-        "Exit")
-            zenity --info --width=500 --height=250  --text="Exiting."
-            exit 0
-            ;;
-        *)
-            zenity --error --width=500 --height=250  --text="Invalid choice. Please try again."
-            ;;
-    esac
+            esac    
+
+    
 done

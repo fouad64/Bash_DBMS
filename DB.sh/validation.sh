@@ -7,24 +7,35 @@ validate_db_name() {
     table from where join user database
   )
 
+  # Check if name is empty
+  if [[ -z "$dbname" ]]; then
+    echo "Invalid: name cannot be empty."
+    return 1
+  fi
+
+  # Check length
   if (( ${#dbname} > 64 )); then
     echo "Invalid: name is longer than 64 characters."
     return 1
   fi
 
-  if [[ ! $dbname =~ ^[a-z] ]]; then
-    echo "Invalid: name must start with a lowercase letter."
+  # Check if starts with a letter
+  if [[ ! $dbname =~ ^[a-zA-Z] ]]; then
+    echo "Invalid: name must start with a letter (a-z or A-Z)."
     return 1
   fi
 
-  if [[ ! $dbname =~ ^[a-z0-9_]+$ ]]; then
-    echo "Invalid: name can only contain lowercase letters, digits, and underscores."
+  # Check valid characters
+  if [[ ! $dbname =~ ^[a-zA-Z0-9_]+$ ]]; then
+    echo "Invalid: name can only contain letters, digits, and underscores."
     return 1
   fi
 
+  # Check for reserved keywords (case-insensitive)
+  local dbname_lower="${dbname,,}"
   for word in "${reserved_keywords[@]}"; do
-    if [[ "$dbname" == "$word" ]]; then
-      echo "Invalid: name is a reserved keyword."
+    if [[ "$dbname_lower" == "$word" ]]; then
+      echo "Invalid: '$dbname' is a reserved keyword."
       return 1
     fi
   done
