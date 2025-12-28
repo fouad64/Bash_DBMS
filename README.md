@@ -6,26 +6,32 @@ This folder contains all scripts for **table management** and **data manipulatio
 
 ## Directory Structure
 
-TableScripts/
+bash-dbms/
 │
-├─ GUI_Scripts/           # Zenity GUI forms & windows
-│   ├─ create_Table.sh       # Create new tables using GUI prompts
-│   ├─ drop_Table.sh         # Delete existing tables via GUI
-│   ├─ insert_into_Table.sh  # Insert records into tables using GUI
-│   ├─ delete_from_table.sh  # Delete records via GUI
-│   ├─ update_Table.sh       # Update records in tables via GUI
-│   ├─ select_from_Table.sh  # Display/select records via GUI
-│   ├─ list_Tables.sh        # List all tables in a database
-│   └─ table_Operations.sh   # Orchestrates GUI table actions
+├─ storage/                   # Storage Layer
+│   ├─ databases/             # Each DB is a folder
+│   │   └─ <db_name>/
+│   │       ├─ tables/        # Table data files
+│   │       └─ metadata/      # Table metadata
+│   └─ db_list.meta           # List of databases
 │
-├─ SQL_Scripts/           # SQL input handlers (CLI)
-│   ├─ SQLDeleteFromTable.sh
-│   ├─ SQLDropTable.sh
-│   ├─ SQLInsertIntoTable.sh
-│   ├─ SQLUpdateTable.sh
-│   └─ SQLSelectFromTable.sh
+├─ DatabaseScripts/           # Database Logic
+│   ├─ Create_DB.sh
+│   ├─ Drop_DB.sh
+│   ├─ List_DB.sh
+│   ├─ Rename_DB.sh
+│   └─ menuDB.sh              # Main menu
 │
-└─ Table_Menu.sh          # CLI table menu (optional)
+└─ TableScripts/              # Table & Data Logic
+    ├─ lib/
+    │   ├─ CreateTable.sh
+    │   ├─ DropTable.sh
+    │   ├─ InsertIntoTable.sh
+    │   ├─ SelectFromTable.sh
+    │   ├─ DeleteFromTable.sh
+    │   ├─ UpdateTable.sh
+    │   └─ ListTable.sh
+    └─ TableMenu.sh
 
 
 ---
