@@ -14,6 +14,5 @@ function DropTb {
 		echo "Table '$DropName' successfully deleted."
 	else
 		echo "Warning: Table '$DropName' does not exist."
-    	fi
-
+  fi
 }
