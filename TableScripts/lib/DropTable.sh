@@ -13,9 +13,11 @@ function DropTb {
 		rm -rf "$DropName" "$DropName".metadata
 		echo "Table "$DropName" successfuly Deleted."
 
+	if [[ -f "tables/$DropName" ]]; then
+		rm -f "tables/$DropName"
+		rm -f "metadata/$DropName.metadata"
+		echo "Table '$DropName' successfully deleted."
 	else
 		echo "Error: The Table "$DropName" Does not Exist."
 
-	fi
-echo "======================================================"
 }

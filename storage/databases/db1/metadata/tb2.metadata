@@ -1,0 +1,12 @@
+"Table Name": tb2
+"Number of Columns": 1
+"Column Name": id
+"Column Type": str
+"Primary Key": n
+---------
+"Table Name": tb2
+"Number of Columns": 2
+"Column Name": name
+"Column Type": str
+"Primary Key": y
+---------
