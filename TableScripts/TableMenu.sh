@@ -19,7 +19,7 @@ source_if_exists "$PROJECT_ROOT/TableScripts/lib/CreateTable.sh"
 source_if_exists "$PROJECT_ROOT/TableScripts/lib/DropTable.sh"
 source_if_exists "$PROJECT_ROOT/TableScripts/lib/InsertIntoTable.sh"
 source_if_exists "$PROJECT_ROOT/TableScripts/lib/ListTable.sh"
-#source_if_exists "$PROJECT_ROOT/TableScripts/lib/SelectFromTable.sh"  
+source_if_exists "$PROJECT_ROOT/TableScripts/lib/SelectFromTable.sh"  
 #source_if_exists "$PROJECT_ROOT/TableScripts/lib/DeleteFromTable.sh" 
 #source_if_exists "$PROJECT_ROOT/TableScripts/lib/UpdateTable.sh"      
 
@@ -31,6 +31,7 @@ fi
 # ========================================
 #           Table Menu Banner
 # ========================================
+while true; do
 clear
 echo -e "\033[0;36m╔════════════════════════════════════════════════════════════════╗\033[0m"
 echo -e "\033[0;36m║                                                                ║\033[0m"
@@ -61,34 +62,41 @@ echo
 #-------------------------------------
 #---- Display Table Menu ----
 #-------------------------------------
-while true; do
+
     read -p $'\033[1;33mPlease enter your choice (1-8): \033[0m' choice
 
     echo -e "\033[0;34m════════════════════════════════════════════════════════════════\033[0m"
 
     case "$choice" in
-        1|"Create Table")
+        1)
             CreateTb
+            read
             ;;
-        2|"List Tables")
+        2)
             ListTb
+            read
             ;;
-        3|"Drop Table")
+        3)
             DropTb
+            read
             ;;
-        4|"Insert into Table")
+        4)
             InsertTb
+            read
             ;;
-        5|"Select From Table")
+        5)
             SelectTb
+            read
             ;;
-        6|"Delete From Table")
+        6)
             DeleteFromTb
+            read
             ;;
-        7|"Update Table")
+        7)
             UpdateTb
+            read
             ;;
-        8|"Exit"|"exit"|"q"|"Q")
+        8)
             clear
             echo -e "\033[1;32mGoodbye! Returning to Database Menu...\033[0m"
             sleep 1

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #============== source partion =============== 
-source ./List_function.sh
+source "$PROJECT_ROOT/DatabaseScripts/lib/validation.sh"
 
 Drop_func(){
     
@@ -8,7 +8,7 @@ local D_name
 List_func
 echo ""
 read -p "Please Enter the DataBase Name that you to Delete :" D_name
-local db_path="$PROJECT_ROOT/storage/databases/$D_name"
+local Db_path="$PROJECT_ROOT/storage/databases/$D_name"
 echo ""
 if [[ ! -e "$Db_path" ]]; then
     echo "The Data Base $D_name not created yet to delete  "
