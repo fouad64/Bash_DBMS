@@ -1,121 +1,196 @@
-# TableScripts - Bash DBMS
+# Bash DBMS 🐚🗄️
 
-This folder contains all scripts for **table management** and **data manipulation** in the Bash Database Management System (DBMS). Scripts are divided into **CLI (Command Line Interface)**, **GUI (Zenity-based or HTML-based)**, and **SQL-style scripts**.
+A simple **Database Management System (DBMS)** implemented using **Bash scripting**.  
+This project simulates basic database operations (Databases, Tables, CRUD) using the Linux file system.
+
+The goal of this project is to understand:
+- How DBMS works internally
+- How data and metadata can be managed using files
+- Advanced Bash scripting concepts
 
 ---
 
-## Directory Structure
+## 📁 Project Structure
 
+```
 bash-dbms/
 │
 ├─ storage/                   # Storage Layer
-│   ├─ databases/             # Each DB is a folder
+│   ├─ databases/             # Each database is a directory
 │   │   └─ <db_name>/
 │   │       ├─ tables/        # Table data files
-│   │       └─ metadata/      # Table metadata
-│   └─ db_list.meta           # List of databases
+│   │       └─ metadata/      # Table metadata files
+│   └─ db_list.meta           # List of all databases
 │
 ├─ DatabaseScripts/           # Database Logic
-│   ├─ Create_DB.sh
-│   ├─ Drop_DB.sh
-│   ├─ List_DB.sh
-│   ├─ Rename_DB.sh
-│   └─ menuDB.sh              # Main menu
+│   ├─ Create_DB.sh           # Create a new database
+│   ├─ Drop_DB.sh             # Drop an existing database
+│   ├─ List_DB.sh             # List all databases
+│   ├─ Rename_DB.sh           # Rename a database
+│   └─ menuDB.sh              # Database main menu
 │
 └─ TableScripts/              # Table & Data Logic
     ├─ lib/
-    │   ├─ CreateTable.sh
-    │   ├─ DropTable.sh
-    │   ├─ InsertIntoTable.sh
-    │   ├─ SelectFromTable.sh
-    │   ├─ DeleteFromTable.sh
-    │   ├─ UpdateTable.sh
-    │   └─ ListTable.sh
-    └─ TableMenu.sh
+    │   ├─ CreateTable.sh     # Create table
+    │   ├─ DropTable.sh       # Drop table
+    │   ├─ InsertIntoTable.sh # Insert data into table
+    │   ├─ SelectFromTable.sh # Select data from table
+    │   ├─ DeleteFromTable.sh # Delete records
+    │   ├─ UpdateTable.sh     # Update records
+    │   └─ ListTable.sh       # List tables
+    └─ TableMenu.sh           # Table main menu
 
 
----
-
-## Features
-
-1. **Create Table**
-   - Create new tables with column names, data types (`Str` / `Int`), and primary keys.
-   - Generates metadata files for each table.
-
-2. **Drop Table**
-   - Delete a table and its metadata.
-   - Confirmation prompt in CLI or GUI.
-
-3. **List Tables**
-   - Display all tables in the current database.
-
-4. **Insert Into Table**
-   - Add new records with data type validation and primary key checks.
-
-5. **Select From Table**
-   - Retrieve records from a table, supports filtering.
-
-6. **Delete From Table**
-   - Remove specific records based on conditions.
-
-7. **Update Table**
-   - Modify records with validation for data type and primary key.
-
-8. **Table Menu**
-   - Central CLI menu to access all table operations.
-   - Can be used independently or from the main database menu.
 
 ---
 
-## Usage
+## ⚙️ Features
 
-### CLI Menu
-```bash
-cd TableScripts
-./Table_Menu.sh
+### 📦 Database Operations
+- Create Database
+- List Databases
+- Connect to Database
+- Rename Database
+- Drop Database
+
+### 📋 Table Operations
+- Create Table
+- List Tables
+- Drop Table
+- Insert Into Table
+- Select From Table
+- Update Table
+- Delete From Table
+
+---
+
+## 🗄️ Storage Design
+
+### Databases
+Each database is stored as a directory under:
+```
+
+storage/databases/<db_name>/
+
+```
+
+### Tables
+- Table data files are stored in:
+```
+
+storage/databases/<db_name>/tables/
+
+```
+
+- Table metadata files are stored in:
+```
+
+storage/databases/<db_name>/metadata/
+
 ````
 
-* Follow prompts to create, update, delete, or query tables.
-* All actions update table files and metadata.
+---
 
-### GUI (Zenity)
+## 🧾 Metadata Format
+
+Each table has a metadata file describing its schema.
+
+Example:
+
+```text
+"Table Name": Students
+"Number of Columns": 3
+"Column Name": ID
+"Column Type": Int
+"Primary Key": y
+--------------------
+"Column Name": Name
+"Column Type": Str
+"Primary Key": n
+--------------------
+"Column Name": Age
+"Column Type": Int
+"Primary Key": n
+````
+
+---
+
+## ▶️ How to Run
+
+### 1️⃣ Clone the repository
 
 ```bash
-cd TableScripts/GUI_Scripts
-./table_Operations.sh
+git clone <repo-url>
+cd bash-dbms
 ```
 
-* Opens a GUI with buttons for each table operation.
-* Input via forms, messages shown in dialogs.
+### 2️⃣ Run Database Menu
 
----
-
-## Metadata Structure
-
-For each table:
-
-* **Columns**: `<table_name>_columns.meta`
-* **Data types**: `<table_name>_types.meta`
-* **Primary key**: `<table_name>_pk.meta`
-
-Stored in:
-
+```bash
+bash DatabaseScripts/menuDB.sh
 ```
-storage/databases/<database_name>/metadata/
+
+### 3️⃣ After connecting to a database
+
+```bash
+bash TableScripts/TableMenu.sh
 ```
 
 ---
 
-## Notes
+## 🛠️ Technologies Used
 
-* Column names must start with a letter or underscore and contain only letters, numbers, or underscores.
-* Data types: `Str` (String) or `Int` (Integer).
-* Primary key constraints are enforced during insertion.
-* GUI scripts require Zenity or a browser-based interface if using HTML/JS.
+* Bash Scripting
+* Linux File System
+* awk / grep / sed
+* CLI-based Menus
 
 ---
 
-## License
+## 📌 Naming Rules
 
-This project is licensed under the MIT License. See [LICENSE](../LICENSE) for details.
+* Database & Table names:
+
+  * Must start with a letter or underscore
+  * Can contain letters, numbers, underscores only
+
+* Data Types:
+
+  * `Int`
+  * `Str`
+
+---
+
+## 🎯 Educational Goals
+
+This project helps in learning:
+
+* Bash scripting best practices
+* File-based data storage
+* Metadata handling
+* Input validation
+* Modular shell scripting
+
+---
+
+## 🚀 Future Improvements
+
+* NOT NULL constraints
+* Foreign Keys
+* Indexing
+* Export / Import tables
+* Better error handling
+* Logging system
+
+---
+
+## 👨‍💻 Author
+
+Built with ❤️ using Bash for learning and educational purposes.
+
+---
+
+## 📜 License
+
+This project is open-source and free to use for educational purposes.
 
