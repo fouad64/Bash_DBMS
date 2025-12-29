@@ -1,4 +1,3 @@
-
 function SelectTb {
 	echo "======================================================"
 	read -p "Enter Table Name to Retrieve Data: " TableSelect
