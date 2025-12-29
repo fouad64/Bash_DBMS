@@ -1,13 +1,19 @@
-# Bash-DBMS 🐚🗄️
+# Bash DBMS 🐚🗄️
 
-A simple **Database Management System (DBMS)** implemented entirely in **Bash**, supporting **CLI, SQL, and GUI interfaces**.  
-It uses the filesystem for storage, where each database is a folder, each table is a CSV file, and metadata is stored separately.
+A simple **Database Management System (DBMS)** implemented using **Bash scripting**.  
+This project simulates basic database operations (Databases, Tables, CRUD) using the Linux file system.
+
+The goal of this project is to understand:
+- How DBMS works internally
+- How data and metadata can be managed using files
+- Advanced Bash scripting concepts
 
 ---
 
-## 🏗️ Project Structure
+## 📁 Project Structure
 
-```text
+
+```
 bash-dbms/
 │
 ├─ storage/                   # Storage Layer
@@ -36,6 +42,8 @@ bash-dbms/
 └─ TableMenu.sh           # Table main menu
 ```
 
+```
+---
 
 ## ⚙️ Features
 
