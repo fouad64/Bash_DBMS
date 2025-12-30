@@ -4,6 +4,7 @@
 #---- Create Table ----
 #-------------------------------------
 function CreateTb {
+    Columns=() 
 	while true
 	do
         local TableName
