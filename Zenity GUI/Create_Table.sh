@@ -6,7 +6,7 @@
 # Create Table Function (Zenity - Fixed paths: table/ & metadata/)
 CreateTb() {
     # Ensure subdirs exist
-    mkdir -p table metadata
+    mkdir -p tables metadata
 
     # Loop for valid table name
     while true; do
